@@ -1,0 +1,23 @@
+<section class="data-view-section">
+  <div class="table-wrapper">
+    <ng-container *ngIf="colorItems.length; else noDataMessage">
+      <div [formGroup]="colorItemsFormGroup">
+        <tbody formArrayName="colorItemsFormArray">
+        <tr *ngFor="let item of colorItems; let index = index">
+          <td>
+            <input [formControlName]="index">
+          </td>
+          <td>{{ item.itemColour }}</td>
+          <td>
+            <button (click)="updateItemName(item)" [disabled]="isLoading">Update</button>
+          </td>
+        </tr>
+        </tbody>
+      </div>
+    </ng-container>
+
+    <ng-template #noDataMessage>
+      <p>There is no data.</p>
+    </ng-template>
+  </div>
+</section>
